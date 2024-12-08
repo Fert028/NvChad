@@ -7,7 +7,7 @@ local capabilities = configs.capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver" }
+local servers = { "html", "cssls", "ts_ls" }
 
 local function organize_imports()
   local params = {
@@ -40,11 +40,6 @@ for _, lsp in ipairs(servers) do
   lspconfig.prismals.setup {}
   lspconfig.volar.setup {
     on_attach = on_attach,
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
-    },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
   }
 end
